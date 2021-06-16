@@ -9,7 +9,7 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
-        <Avatar src="http://cdn.epicstream.com/assets/uploads/ckeditor/images/1612289466_sub-buzz-11718-1591678685-12.png"/>
+        <Avatar src="http://cdn.epicstream.com/assets/uploads/ckeditor/images/1612289466_sub-buzz-11718-1591678685-12.png" />
         <div className="sidebar__headerRight">
           <IconButton>
             <DonutLargeIcon />
@@ -21,6 +21,9 @@ function Sidebar() {
             <MoreVertIcon />
           </IconButton>
         </div>
+      </div>
+      <div className="sidebar__search">
+      
       </div>
     </div>
   );
