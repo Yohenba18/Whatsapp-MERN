@@ -22,3 +22,11 @@
     margin-right: 2vw;
     font-size: 24px !important;
 }
+
+.sidebar__search{
+    display: flex;
+    align-items:center;
+    background-color:#f6f6f6;
+    height:39px;
+    padding: 10px;
+}
