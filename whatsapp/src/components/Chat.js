@@ -28,7 +28,7 @@ function Chat() {
         </div>
       </div>
       <div className="chat__body">
-      
+        <p>this is a messsage.</p>
       </div>
     </div>
   );
