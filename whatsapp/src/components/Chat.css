@@ -43,3 +43,19 @@
     background-color: #ffffff;
     margin-bottom: 30px;
 }
+
+.chat__reciever{
+    margin-left: auto;
+    background-color:#dcf8c6;
+}
+.chat__timestamp{
+    margin-left: 30px;
+    font-size: xx-small;
+}
+
+.chat__name{
+    position:absolute;
+    top:-15px;
+    font-weight: 800;
+    font-size:xx-small;
+}
