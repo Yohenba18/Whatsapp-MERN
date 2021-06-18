@@ -1,9 +1,9 @@
 import React from "react";
 import "./Chat.css";
-import { Avatar,IconButton } from "@material-ui/core";
+import { Avatar, IconButton } from "@material-ui/core";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
-import AttachFileIcon from '@material-ui/icons/AttachFile';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import AttachFileIcon from "@material-ui/icons/AttachFile";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 function Chat() {
   return (
@@ -14,9 +14,9 @@ function Chat() {
           <h3>Room Info</h3>
           <p>last seen at</p>
         </div>
-        
+
         <div className="chat__headerRight">
-        <IconButton>
+          <IconButton>
             <SearchOutlinedIcon />
           </IconButton>
           <IconButton>
@@ -28,7 +28,10 @@ function Chat() {
         </div>
       </div>
       <div className="chat__body">
-        <p>this is a messsage.</p>
+        <p className="chat__message">
+          <span className="chat__name">yohenba</span>
+          <span className="chat__timestamp">{new Date().toUTCString()}</span>
+        </p>
       </div>
     </div>
   );
