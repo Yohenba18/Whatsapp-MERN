@@ -4,6 +4,7 @@ import { Avatar, IconButton } from "@material-ui/core";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 
 function Chat() {
   return (
@@ -45,6 +46,12 @@ function Chat() {
         </p>
       </div>
 
+      <div className="chat__footer">
+        <InsertEmoticonIcon />
+        <form>
+        
+        </form>
+      </div>
     </div>
   );
 }
