@@ -49,7 +49,8 @@ function Chat() {
       <div className="chat__footer">
         <InsertEmoticonIcon />
         <form>
-        
+        <input placeholder="Type a message" type="text"/>
+        <button type="submit">Send a message</button>
         </form>
       </div>
     </div>
