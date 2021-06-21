@@ -1,3 +1,5 @@
+//nodemon --inspect server.js
+
 // importing
 import express from "express";
 
