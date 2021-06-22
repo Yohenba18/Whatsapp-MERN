@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
   res.status(200).send("Hello world");
 });
 
-app.post("/api/v1/messages/new", (req,res) => {
+app.post("/messages/new", (req,res) => {
   const dbMessage = req.body;
 
   Messages.create(dbMessage, (err,data) => {
