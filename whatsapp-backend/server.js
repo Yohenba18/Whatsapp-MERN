@@ -4,6 +4,7 @@
 // importing
 import express from "express";
 import mongoose from "mongoose";
+import Messages from "./dbMessages.js"
 
 // app config
 
