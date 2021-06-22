@@ -26,6 +26,16 @@ app.get("/", (req, res) => {
   res.status(200).send("Hello world");
 });
 
-app.post("/api/v1/messages/new")
+app.post("/api/v1/messages/new", (req,res) => {
+  const dbMessage = req.body;
+
+  Messages.create(dbMessage, (err,data) => {
+    if(err){
+      res.status(500).send(err)
+    } else{
+      res.status(201).send(`new message created: \n ${data}`)
+    }
+  })
+})
 //listeners
 app.listen(port, () => console.log(`listening as localhost: ${port}`));
