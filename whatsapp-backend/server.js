@@ -33,7 +33,7 @@ app.post("/api/v1/messages/new", (req,res) => {
     if(err){
       res.status(500).send(err)
     } else{
-      res.status(201).send(`new message created: \n ${data}`)
+      res.status(201).send(data)
     }
   })
 })
