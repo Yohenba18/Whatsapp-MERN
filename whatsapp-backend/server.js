@@ -2,9 +2,12 @@
 //JqnmBfV9dxUYmZ2U- password
 
 // importing
-const express = require("express");
-const mongoose = require("mongoose");
-const Messages = require("./dbMessages.js");
+import express from "express";
+import mongoose from "mongoose";
+import Messages from "./dbMessages.js";
+// const express = require("express");
+// const mongoose = require("mongoose");
+// const Messages = require("./dbMessages.js");
 
 // app config
 
@@ -43,4 +46,4 @@ app.post('/messages/new', (req, res) => {
 })
 
 //listeners
-app.listen(port, () => console.log(`listening as localhost: ${port}`));
+app.listen(port, () => console.log(`Listening on localhost:${port}`));
