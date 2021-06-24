@@ -5,6 +5,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import Messages from "./dbMessages.js";
+// import bodyParser from "body-parser";
 // const express = require("express");
 // const mongoose = require("mongoose");
 // const Messages = require("./dbMessages.js");
@@ -15,6 +16,9 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 //midlewares
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(express.urlencoded())
 app.use(express.json());
 
 //db config
@@ -28,19 +32,19 @@ mongoose.connect(connection_url, {
 });
 
 // api routes
-app.get("/", (req, res) => res.status(200).send("Hello World"));
+app.get("/", (req, res) => res.status(201).send("Hello World"));
 
 app.post("/messages/new", (req, res) => {
-  const dbMessage = req.body;
+    const dbMessage = req.body;
 
-  Messages.create(dbMessage, (err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(201).send(data);
-    }
-  });
-});
+    Messages.create(dbMessage, (err, data) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(201).send(data);
+        }
+    })
+})
 
 //listeners
 app.listen(port, () => console.log(`Listening on localhost:${port}`));
