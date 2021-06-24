@@ -34,6 +34,17 @@ mongoose.connect(connection_url, {
 // api routes
 app.get("/", (req, res) => res.status(201).send("Hello World"));
 
+app.get('/messages/sync', (req, res) => {
+  Messages.find((err, data) => { 
+  
+      if (err) {
+          res.status(500).send(err)
+      } else {
+          res.status(200).send(data)  //OK: 200
+      }
+  })
+})
+
 app.post("/messages/new", (req, res) => {
     const dbMessage = req.body;
 
@@ -41,7 +52,7 @@ app.post("/messages/new", (req, res) => {
         if (err) {
             res.status(500).send(err);
         } else {
-            res.status(201).send(data);
+            res.status(201).send(data); //CREATED: 201
         }
     })
 })
