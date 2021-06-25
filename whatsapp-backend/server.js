@@ -5,6 +5,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import Messages from "./dbMessages.js";
+import Pusher from "pusher";
 // import bodyParser from "body-parser";
 // const express = require("express");
 // const mongoose = require("mongoose");
@@ -14,6 +15,14 @@ import Messages from "./dbMessages.js";
 
 const app = express();
 const port = process.env.PORT || 9000;
+
+const pusher = new Pusher({
+    appId: "1224878",
+    key: "3e00697874ce96ac8590",
+    secret: "7f7079d50570f33bfca0",
+    cluster: "ap2",
+    useTLS: true
+  });
 
 //midlewares
 // app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,6 +39,12 @@ mongoose.connect(connection_url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+const db = mongoose.connection;
+
+db.once("open" , () => {
+    console.log('db connection')
+})
 
 // api routes
 app.get("/", (req, res) => res.status(201).send("Hello World"));
