@@ -53,7 +53,12 @@ db.once("open", () => {
 
     if (change.operationType === "insert") {
       const messageDetails = change.fullDocument;
-      pusher.trige("messages", "inserted", {});
+      pusher.trige("messages", "inserted", {
+        name: messageDetails.name,
+        message: messageDetails.message,
+      });
+    } else {
+      console.log("error trigering pusher");
     }
   });
 });
