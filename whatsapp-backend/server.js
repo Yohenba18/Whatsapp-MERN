@@ -17,12 +17,12 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 const pusher = new Pusher({
-    appId: "1224878",
-    key: "3e00697874ce96ac8590",
-    secret: "7f7079d50570f33bfca0",
-    cluster: "ap2",
-    useTLS: true
-  });
+  appId: "1224878",
+  key: "3e00697874ce96ac8590",
+  secret: "7f7079d50570f33bfca0",
+  cluster: "ap2",
+  useTLS: true,
+});
 
 //midlewares
 // app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,42 +42,46 @@ mongoose.connect(connection_url, {
 
 const db = mongoose.connection;
 
-db.once("open" , () => {
-    console.log('db connected');
+db.once("open", () => {
+  console.log("db connected");
 
-    const msgCollection = db.collection("messagecontents");
-    const changeStream = msgCollection.watch();
+  const msgCollection = db.collection("messagecontents");
+  const changeStream = msgCollection.watch();
 
-    changeStream.on('change', (change) => {
-        console.log("a change occured" , change);
-    })
-})
+  changeStream.on("change", (change) => {
+    console.log("a change occured", change);
+
+    if (change.operationType === "insert") {
+      const messageDetails = change.fullDocument;
+      pusher.trige("messages", "inserted", {});
+    }
+  });
+});
 
 // api routes
 app.get("/", (req, res) => res.status(201).send("Hello World"));
 
-app.get('/messages/sync', (req, res) => {
-  Messages.find((err, data) => { 
-  
-      if (err) {
-          res.status(500).send(err)
-      } else {
-          res.status(200).send(data)  //OK: 200
-      }
-  })
-})
+app.get("/messages/sync", (req, res) => {
+  Messages.find((err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data); //OK: 200
+    }
+  });
+});
 
 app.post("/messages/new", (req, res) => {
-    const dbMessage = req.body;
+  const dbMessage = req.body;
 
-    Messages.create(dbMessage, (err, data) => {
-        if (err) {
-            res.status(500).send(err);
-        } else {
-            res.status(201).send(data); //CREATED: 201
-        }
-    })
-})
+  Messages.create(dbMessage, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(data); //CREATED: 201
+    }
+  });
+});
 
 //listeners
 app.listen(port, () => console.log(`Listening on localhost:${port}`));
