@@ -43,7 +43,14 @@ mongoose.connect(connection_url, {
 const db = mongoose.connection;
 
 db.once("open" , () => {
-    console.log('db connection')
+    console.log('db connected');
+
+    const msgCollection = db.collection("messagecontents");
+    const changeStream = msgCollection.watch();
+
+    changeStream.on('change', () => {
+        console.log(change);
+    })
 })
 
 // api routes
