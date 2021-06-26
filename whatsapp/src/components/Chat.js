@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Chat.css";
 import { Avatar, IconButton } from "@material-ui/core";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
@@ -7,6 +7,12 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 
 function Chat({ messages }) {
+  const [input, setInput] = useState("");
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="chat">
       <div className="chat__header">
@@ -43,8 +49,15 @@ function Chat({ messages }) {
       <div className="chat__footer">
         <InsertEmoticonIcon />
         <form>
-          <input placeholder="Type a message" type="text" />
-          <button type="submit">Send a message</button>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Type a message"
+            type="text"
+          />
+          <button onClick={sendMessage} type="submit">
+            Send a message
+          </button>
         </form>
       </div>
     </div>
