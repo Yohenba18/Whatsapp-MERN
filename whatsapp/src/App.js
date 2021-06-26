@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import Chat from "./components/Chat";
 import Sidebar from "./components/Sidebar";
-import Pusher from "pusher";
+import Pusher from "pusher-js";
 
 function App() {
   useEffect(() => {
