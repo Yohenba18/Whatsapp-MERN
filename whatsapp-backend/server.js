@@ -17,13 +17,7 @@ import cors from 'cors';
 const app = express();
 const port = process.env.PORT || 9000;
 
-const pusher = new Pusher({
-  appId: "1224878",
-  key: "3e00697874ce96ac8590",
-  secret: "7f7079d50570f33bfca0",
-  cluster: "ap2",
-  useTLS: true,
-});
+
 
 //midlewares
 // app.use(bodyParser.urlencoded({ extended: false }));
