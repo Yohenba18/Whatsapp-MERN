@@ -6,6 +6,7 @@ import express from "express";
 import mongoose from "mongoose";
 import Messages from "./dbMessages.js";
 import Pusher from "pusher";
+import cors from 'cors';
 // import bodyParser from "body-parser";
 // const express = require("express");
 // const mongoose = require("mongoose");
@@ -29,6 +30,13 @@ const pusher = new Pusher({
 // app.use(bodyParser.json());
 // app.use(express.urlencoded())
 app.use(express.json());
+app.use(cors());
+
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader("Access-Control-Allow-Headers", "*");
+//   next();
+// });
 
 //db config
 const connection_url =
