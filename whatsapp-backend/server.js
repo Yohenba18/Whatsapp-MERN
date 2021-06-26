@@ -33,8 +33,7 @@ app.use(cors());
 // });
 
 //db config
-const connection_url =
-  "mongodb+srv://admin:JqnmBfV9dxUYmZ2U@cluster0.rmpgm.mongodb.net/whatsappdb?retryWrites=true&w=majority";
+
 
 mongoose.connect(connection_url, {
   useCreateIndex: true,
