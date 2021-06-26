@@ -10,8 +10,8 @@ function App() {
       cluster: "ap2",
     });
 
-    const channel = pusher.subscribe("my-channel");
-    channel.bind("my-event", function (data) {
+    const channel = pusher.subscribe("messages");
+    channel.bind("inserted", (data) =>  {
       alert(JSON.stringify(data));
     });
   }, []);
