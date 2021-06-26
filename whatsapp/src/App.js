@@ -5,6 +5,11 @@ import Sidebar from "./components/Sidebar";
 import Pusher from "pusher-js";
 
 function App() {
+
+  useEffect(() => {
+
+  },[]);
+
   useEffect(() => {
     const pusher = new Pusher("3e00697874ce96ac8590", {
       cluster: "ap2",
