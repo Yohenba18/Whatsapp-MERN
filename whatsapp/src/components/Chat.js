@@ -5,12 +5,21 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
+import axios from "../axios";
 
 function Chat({ messages }) {
   const [input, setInput] = useState("");
-
-  const sendMessage = (e) => {
+  const sendMessage = async (e) => {
     e.preventDefault();
+
+    await axios.post("/messages/new", {
+      message: input,
+      name: "DEMO APP",
+      timestamp: "Just now !",
+      received: false,
+    });
+
+    setInput("");
   };
 
   return (
